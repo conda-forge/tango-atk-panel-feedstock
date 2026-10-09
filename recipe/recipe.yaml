@@ -1,0 +1,56 @@
+schema_version: 1
+
+context:
+  name: tango-atk-panel
+  version: "6.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://gitlab.com/tango-controls/atk-panel/-/archive/${{ version }}/atk-panel-${{ version }}.tar.gz
+  sha256: b7eebc2b015cc0a67e701061e3d4e72c437533a50b2143a32678484d81c2c305
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - openjdk 17.*
+    - maven
+  run:
+    - openjdk >=17
+    - jtango >=9.6.8,<10.0.0
+    - tango-atk >=9.3.22
+
+tests:
+  - script:
+      - if: unix
+        then: test -f ${PREFIX}/share/java/ATKPanel.jar
+      - if: unix
+        then: test -f ${PREFIX}/share/java/ATKPanel-${PKG_VERSION}.jar
+      - if: unix
+        then: test -f ${PREFIX}/bin/atkpanel
+      - if: win
+        then: if not exist %PREFIX%\share\java\ATKPanel.jar exit 1
+      - if: win
+        then: if not exist %PREFIX%\Scripts\atkpanel.bat exit 1
+
+about:
+  license: LGPL-3.0-or-later
+  license_file:
+    - LICENSE
+    - aggregate-third-party-report.html
+  summary: Generic control panel application for Tango
+  description: |
+    AtkPanel is a generic control panel application.
+    It can be used to control any Tango device.
+    Tango-Controls is a software toolkit for building control systems.
+  homepage: https://www.tango-controls.org
+  repository: https://gitlab.com/tango-controls/atk-panel
+  documentation: https://tango-controls.readthedocs.io/en/latest/tools-and-extensions/built-in/atkpanel/atkpanel.html
+
+extra:
+  recipe-maintainers:
+    - beenje
