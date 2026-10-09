@@ -25,17 +25,16 @@ requirements:
     - tango-atk >=9.3.22
 
 tests:
-  - script:
-      - if: unix
-        then: test -f ${PREFIX}/share/java/ATKPanel.jar
-      - if: unix
-        then: test -f ${PREFIX}/share/java/ATKPanel-${PKG_VERSION}.jar
-      - if: unix
-        then: test -f ${PREFIX}/bin/atkpanel
-      - if: win
-        then: if not exist %PREFIX%\share\java\ATKPanel.jar exit 1
-      - if: win
-        then: if not exist %PREFIX%\Scripts\atkpanel.bat exit 1
+  - package_contents:
+      files:
+        - share/java/ATKPanel.jar
+        - if: unix
+          then: share/java/ATKPanel-${PKG_VERSION}.jar
+        - if: win
+          then: Scripts\atkpanel.bat
+      bin:
+        - if: unix
+          then: atkpanel
 
 about:
   license: LGPL-3.0-or-later
