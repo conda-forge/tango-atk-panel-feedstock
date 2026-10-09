@@ -29,7 +29,7 @@ tests:
       files:
         - share/java/ATKPanel.jar
         - if: unix
-          then: share/java/ATKPanel-${PKG_VERSION}.jar
+          then: share/java/ATKPanel-${{ version }}.jar
         - if: win
           then: Scripts\atkpanel.bat
       bin:
