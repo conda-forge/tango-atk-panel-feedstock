@@ -5,9 +5,9 @@ mvn install -DskipTests
 
 # Generate third party license report
 mvn license:aggregate-third-party-report
-cp target/site/aggregate-third-party-report.html .
+cp target/reports/aggregate-third-party-report.html .
 
-mkdir -p ${PREFIX}/share/java
+mkdir -p ${PREFIX}/share/java ${PREFIX}/bin
 
 install -m 0644 target/ATKPanel-${PKG_VERSION}.jar ${PREFIX}/share/java
 ln -s ATKPanel-${PKG_VERSION}.jar ${PREFIX}/share/java/ATKPanel.jar
