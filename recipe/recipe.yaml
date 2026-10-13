@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: tango-atk-panel
-  version: "6.1"
+  version: "7.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://gitlab.com/tango-controls/atk-panel/-/archive/${{ version }}/atk-panel-${{ version }}.tar.gz
-  sha256: e759bc25aa011a1205e1bf6e225d62f9411838f01c4884757097c7ad53391e62
+  sha256: 654ba63ac9edd8746bc596ca64e2ce81efa29fd482e6887363377a64d2a00027
 
 build:
   number: 0
@@ -21,8 +21,8 @@ requirements:
     - maven
   run:
     - openjdk >=17
-    - jtango >=9.6.8,<10.0.0
-    - tango-atk >=9.3.22
+    - jtango >=10.0.1,<11.0.0
+    - tango-atk >=10.0.5
 
 tests:
   - package_contents:
