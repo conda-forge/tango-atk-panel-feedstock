@@ -21,8 +21,8 @@ requirements:
     - maven
   run:
     - openjdk >=17
-    - jtango >=9.6.8,<10.0.0
-    - tango-atk >=9.3.22
+    - jtango >=10.0.1,<11.0.0
+    - tango-atk >=10.0.5
 
 tests:
   - package_contents:
